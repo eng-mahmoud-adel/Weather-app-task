@@ -4,9 +4,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// this is for using bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// this is for using redux
+import {Provider} from 'react-redux';
+import {BrowserRouter, withRouter} from 'react-router-dom';
+import store from './Store/Store';
+
+const AppWithRouter = withRouter(App);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppWithRouter />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
