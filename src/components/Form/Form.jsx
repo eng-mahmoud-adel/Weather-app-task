@@ -5,10 +5,17 @@ import {getData} from '../../Store/Action/Action';
 const Form = ({data, getData}) => {
 
     const handleSubmit = (e) => {
-        // to stop refreshing
-        e.preventDefault();
-        // to target the input field
-        getData(e.target.elements[0].value);
+        if (e.target.elements[0].value == "") {
+            // to stop refreshing
+            e.preventDefault();
+            return false;
+        } else {
+            // to stop refreshing
+            e.preventDefault();
+            // to target the input field
+            getData(e.target.elements[0].value);
+            e.target.elements[0].value = "";
+        }
     }
 
     return (
